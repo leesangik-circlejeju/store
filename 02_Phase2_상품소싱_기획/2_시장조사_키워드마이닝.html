@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_시장조사_키워드마이닝 - 스마트스토어 마스터 클래스</title>
+    
+<style>
+    /* 폰트 설정 (Pretendard) */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+    
+    :root {
+        --primary-color: #0058FF; /* 네이버 톤, 블루 */
+        --primary-light: #E6F0FF;
+        --text-main: #333333;
+        --text-mute: #666666;
+        --bg-body: #F9FAFB;
+        --bg-content: #FFFFFF;
+        --border-color: #E5E7EB;
+        --accent-red: #EF4444;
+        --accent-green: #10B981;
+        --accent-yellow: #F59E0B;
+    }
+
+    body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 40px 20px;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--bg-content);
+        padding: 50px 60px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        color: #1F2937;
+    }
+
+    p {
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 24px;
+    }
+
+    li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    /* 테이블 스타일 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    th, td {
+        padding: 15px 20px;
+        border: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #FDFDFD;
+    }
+
+    /* 인용구 및 알림 스타일 */
+    blockquote {
+        background-color: #FFFBEB;
+        border-left: 5px solid var(--accent-yellow);
+        margin: 25px 0;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote strong {
+        color: #D97706;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+
+    .alert-info {
+        background-color: var(--primary-light);
+        border-left: 5px solid var(--primary-color);
+        padding: 20px;
+        border-radius: 4px;
+        margin: 25px 0;
+    }
+
+    /* 체크리스트 */
+    .checklist {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .checklist li {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        background: #F3F4F6;
+        padding: 15px 15px 15px 45px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .checklist li:hover {
+        background: #E5E7EB;
+    }
+
+    .checklist li::before {
+        content: '✓';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* 링크 스타일 */
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #003eb3;
+        text-decoration: underline;
+    }
+
+    /* 하이라이트/팁 뱃지 */
+    .badge {
+        background: var(--primary-color);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .qna-box {
+        background: #F9FAFB;
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .qna-q {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            padding: 30px 20px;
+        }
+        h1 { font-size: 24px; }
+        h2 { font-size: 20px; }
+        table, th, td { font-size: 14px; padding: 10px; }
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 30px;">
+            <a href="../index.html" style="font-size: 16px;">⬅️ 뒤로가기 (메인 허브)</a>
+        </header>
+        <h1>🔍 매출을 터뜨리는 마법의 단어: 황금 롱테일 키워드 마이닝 기법</h1>
+<h2>📌 1. 왜 이 과정이 중요한가요? (도입부)</h2>
+<p>"물건이 아무리 좋아도 검색이 안 되면 우주 미아다." 온라인 세계의 절대 법칙입니다. 내 스마트스토어가 네이버 1페이지 맨 상단에 꽂히려면 소비자가 진짜로 검색창에 치는 '단어들의 패턴'을 정확히 알아내야 합니다! </p>
+<p>'여성복', '마스크' 같이 경쟁률이 박 터져서 대기업만 살아남는 1차원 대형 키워드는 철저히 버리십시오. 검색 수요(Needs)는 충분하지만, 멍청한 경쟁자들이 아직 상품을 등록하지 않은 노다지 땅, <strong>[경쟁강도가 극도로 낮은 롱테일 키워드 (Long-tail Keyword)]</strong>를 발굴하는 철저한 데이터 기반 분석이 당신을 월천 셀러로 만듭니다.</p>
+<hr />
+<h2>🚀 2. 단계별 실전 액션 플랜 (키워드 마이닝 매뉴얼)</h2>
+<h3>Step 1: 셀러 필수 무료 데이터 툴 장착하기</h3>
+<ul>
+<li>허공에 삽질하지 말고 수치가 나오는 분석 플랫폼을 켜십시오: <strong>아이템스카우트(Itemscout), 판다랭크, 일헥타르, 셀러마스터</strong></li>
+<li>조회하고 싶은 1차 카테고리(예: 여성 신발)나 상품군을 검색창에 넣습니다.</li>
+</ul>
+<h3>Step 2: "경쟁강도" 수치 계산과 보물 세부 키워드 발굴</h3>
+<p>이 바닥 최고의 보물섬 필터를 데이터 툴에 세팅하십시오.
+1. <strong>월 검색수</strong>: <code>[3,000건 ~ 8,000건]</code> 수준이 초보가 노릴 수 있는 가장 적합한 트래픽입니다. (1만 건이 넘어가면 고인물들이 이미 점령했습니다.)
+2. <strong>총 상품 수</strong>: <code>[10,000개 이하]</code> 또는 <code>[30,000개 이하]</code>를 찾으십시오.
+3. <strong>경쟁강도 (★중요)</strong> = <code>(총 상품 수 ÷ 월 검색수)</code> 
+   - 이 수치가 <strong><code>5 이하</code></strong> 인 단어를 찾아내는 것이 핵심입니다. 즉, "여성 겨울 부츠" 같이 상품이 500만 개 등록된 키워드를 버리고, <strong>"털 안감 방수 미들 양털부츠"</strong> 처럼 경쟁강도가 낫은 3~4어절 조합(롱테일)을 발굴하십시오.
+4. 발견된 황금 키워드를 최소 5~10개 정도 엑셀이나 메모장에 긁어모읍니다.</p>
+<h3>Step 3: 정보성 키워드 vs 쇼핑성 키워드 걸러내기 (함정 주의)</h3>
+<p>검색량이 월 5만 건 폭발인데 상품 수가 적은 키워드가 있습니다. "가을 웜톤 화장법", "수족냉증에 좋은 음식".
+이건 <strong>[정보성 키워드]</strong> 입니다. 사람들은 이걸 검색해서 블로그 글을 읽고 싶어 하지 당장 물건을 결제하려 들지 않습니다.
+반드시 네이버 통합검색에 검색했을 때 스크롤 최상단에 [네이버 쇼핑] 탭이 가장 먼저 뜨는 <strong>[쇼핑성 키워드]</strong> (예: 가을 웜톤 블러셔 세트)만 추려내야 합니다!</p>
+<hr />
+<h2>💡 3. 상위 1% 셀러들의 실무 시크릿 팁 (노하우)</h2>
+<blockquote>
+<p>📊 <strong>네이버 데이터랩(Datalab) 계절성 선점의 마법</strong>
+수영복을 7월에 소싱해서 올리면 늦은 걸까요? 엄청나게 늦었습니다!
+네이버 데이터랩 검색어 트렌드를 보면 래시가드나 수영복은 5월 말부터 검색 그래프 선이 수직 상승합니다. 상위 1% 셀러들은 겨울용 '어그 부츠'를 늦여름인 8월에 사진 찍고 소싱해서 등록해 둡니다. 트렌드(검색량)가 폭발하기 직전 1~2달의 조용한 기간에 남들보다 먼저 물건을 등록해 두어, 네이버 알고리즘 점수(SEO)를 야금야금 쌓아 올린 뒤 성수기에 1페이지 꼭대기에서 돈을 쓸어 담는 전략입니다.</p>
+<p>🔍 <strong>살아숨쉬는 '스페이스바' 연관 검색어 훔치기</strong>
+툴을 쓸 줄 모른다면 직관을 이용하십시오. 
+모바일 네이버 쇼핑 검색창에 내 상품 단어를 치고 띄어쓰기(스페이스바)를 톡 누르세요. <code>원피스</code>라고 치면 하단에 (여름 원피스, 롱 원피스, 린넨 원피스)가 줄줄이 뜹니다. 이것이 어제 대한민국의 주부와 직장인 수십만 명이 '실제로 손가락으로 눌러본 인기 단어'들입니다. 이 자동완성 단어들을 빼앗아서 내 상품명(타이틀)에 예쁘게 버무려 넣는 것이 키워드 연금술의 첫 단추입니다.</p>
+</blockquote>
+<hr />
+<h2>❓ 4. 자주 묻는 질문 (FAQ)</h2>
+<p><strong>Q1. 검색량이 월 100~200 밖에 안 되는 극초소형 꼬꼬마 아이들도 쓸모가 있나요?</strong>
+A: 무조건 쓸모 있습니다! 아무도 검색 안 한다고 무시하지 마십시오. 이런 극세부 초소형 키워드 10개가 뭉치면 대형 키워드 1개보다 더 월등한 '실제 결제(구매전환율)'를 이끌어냅니다. "그냥 마스크" 검색하는 사람보다 "아이보리색 새부리형 마스크 중형 50매"라고 명확히 타겟팅해서 검색하는 사람이 당장 오늘 카드를 긁을 확률이 500배는 높습니다.</p>
+<p><strong>Q2. 메인 상품명(타이틀)에는 최대 몇 글자까지 키워드를 구겨 넣는 게 좋나요?</strong>
+A: 네이버 쇼핑 가이드라인에 따르면 <strong>[띄어쓰기 포함 50자 이하]</strong> 가 최적입니다. 키워드를 무식하게 수십 개씩 도배(스팸성)하면 페널티를 먹어 안드로메다로 사라집니다. 핵심 중소형 키워드 3~5개를 자연스러운 문장 구조로 나열하십시오.</p>
+<h2>📺 스마트스토어 고객센터 메뉴얼</h2>
+<ul>
+<li><a href="https://help.sell.smartstore.naver.com/index.help">고객센터</a></li>
+<li><a href="https://sell.smartstore.naver.com/#/center-notice/list/MANUAL">메뉴얼</a></li>
+</ul>
+<h3>📚 [LEARNING_ROADMAP] 공식 심화 매뉴얼 (소비자 조사)</h3>
+<ul>
+<li><a href="file:///d:/anti/store/참고자료/소비자솔루션/소비자조사솔루션_매뉴얼_1.+솔루션+시작하기_250801.pdf">소비자조사솔루션_매뉴얼_1. 솔루션 시작하기</a></li>
+<li><a href="file:///d:/anti/store/참고자료/소비자솔루션/소비자조사솔루션_매뉴얼_2.+설문+만들기_250528.pdf">소비자조사솔루션_매뉴얼_2. 설문 만들기</a></li>
+<li><a href="file:///d:/anti/store/참고자료/소비자솔루션/소비자조사솔루션_매뉴얼_3.+설문+홍보+설정하기_250801.pdf">소비자조사솔루션_매뉴얼_3. 설문 홍보 설정하기</a></li>
+<li><a href="file:///d:/anti/store/참고자료/소비자솔루션/소비자조사솔루션_매뉴얼_4.+설문+관리하기_250801.pdf">소비자조사솔루션_매뉴얼_4. 설문 관리하기</a></li>
+<li><a href="file:///d:/anti/store/참고자료/소비자솔루션/소비자조사솔루션_매뉴얼_5.+응답+수집,+분석하기_250528.pdf">소비자조사솔루션_매뉴얼_5. 응답 수집, 분석하기</a></li>
+</ul>
+<h2>📺 네이버 비즈니스 스쿨 교육 영상</h2>
+<ul>
+<li><a href="https://bizschool.naver.com/online/course/65230/lecture/1462151">소비자조사 솔루션 2부 활용하기 편</a></li>
+<li><a href="https://bizschool.naver.com/online/course/65222/lecture/1462134">소비자조사 솔루션 1부 시작하기 편</a></li>
+</ul>
+    </div>
+</body>
+</html>

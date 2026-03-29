@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트스토어 실무 마스터 로드맵</title>
+    
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+    --bg-color: #121212; /* Deep dark mode */
+    --surface: #1e1e1e;
+    --surface-hover: #2a2a2a;
+    --text-main: #ffffff;
+    --text-sub: #a0a0a0;
+    --primary: #03C75A;
+    --radius: 16px;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+    background: linear-gradient(135deg, #022013 0%, #121212 100%);
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    background: -webkit-linear-gradient(45deg, #03C75A, #05e56a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-sub);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.grid-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.phase-card {
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.phase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border-color: rgba(3, 199, 90, 0.3);
+}
+
+.phase-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phase-title span {
+    display: inline-block;
+    background: var(--primary);
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.post-link {
+    display: block;
+    padding: 15px 15px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.post-link:hover {
+    background: rgba(3, 199, 90, 0.1);
+    border-left: 3px solid var(--primary);
+    color: var(--primary);
+    padding-left: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+}
+</style>
+
+</head>
+<body>
+    <div class="hero">
+        <h1>SmartStore Master Class</h1>
+        <p>기초 행정 처리부터 스케일업 마케팅까지, 16개의 압도적인 실무 가이드를 통해 성공적인 스토어 창업을 이뤄내십시오.</p>
+    </div>
+    
+    <div class="grid-container">
+
+        <div class="phase-card">
+            <h2 class="phase-title"><span>Phase1</span> 인프라구축 브랜딩</h2>
+            <div class="post-list">
+                <a href="01_Phase1_%EC%9D%B8%ED%94%84%EB%9D%BC%EA%B5%AC%EC%B6%95_%EB%B8%8C%EB%9E%9C%EB%94%A9/1_%EB%B2%95%EC%A0%81%ED%96%89%EC%A0%95_%EC%9D%B8%ED%94%84%EB%9D%BC%EC%A4%80%EB%B9%84.html" class="post-link">1 법적행정 인프라준비</a>
+                <a href="01_Phase1_%EC%9D%B8%ED%94%84%EB%9D%BC%EA%B5%AC%EC%B6%95_%EB%B8%8C%EB%9E%9C%EB%94%A9/2_%EB%84%A4%EC%9D%B4%EB%B2%84_%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4_%EA%B0%9C%EC%84%A4.html" class="post-link">2 네이버 스마트스토어 개설</a>
+                <a href="01_Phase1_%EC%9D%B8%ED%94%84%EB%9D%BC%EA%B5%AC%EC%B6%95_%EB%B8%8C%EB%9E%9C%EB%94%A9/3_%EB%84%A4%EC%9D%B4%EB%B2%84_%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4_%EA%B8%B0%EB%B3%B8%ED%99%9C%EC%9A%A9.html" class="post-link">3 네이버 스마트스토어 기본활용</a>
+                <a href="01_Phase1_%EC%9D%B8%ED%94%84%EB%9D%BC%EA%B5%AC%EC%B6%95_%EB%B8%8C%EB%9E%9C%EB%94%A9/4_%EC%A0%95%EC%B1%85_%EB%B0%8F_%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95.html" class="post-link">4 정책 및 환경설정</a>
+            </div>
+        </div>
+
+        <div class="phase-card">
+            <h2 class="phase-title"><span>Phase2</span> 상품소싱 기획</h2>
+            <div class="post-list">
+                <a href="02_Phase2_%EC%83%81%ED%92%88%EC%86%8C%EC%8B%B1_%EA%B8%B0%ED%9A%8D/1_%ED%83%80%EA%B2%9F%EA%B3%A0%EA%B0%9D_%EC%86%8C%EC%8B%B1%EB%B0%A9%ED%96%A5.html" class="post-link">1 타겟고객 소싱방향</a>
+                <a href="02_Phase2_%EC%83%81%ED%92%88%EC%86%8C%EC%8B%B1_%EA%B8%B0%ED%9A%8D/2_%EC%8B%9C%EC%9E%A5%EC%A1%B0%EC%82%AC_%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A7%88%EC%9D%B4%EB%8B%9D.html" class="post-link">2 시장조사 키워드마이닝</a>
+                <a href="02_Phase2_%EC%83%81%ED%92%88%EC%86%8C%EC%8B%B1_%EA%B8%B0%ED%9A%8D/3_%EA%B2%BD%EC%A0%9C%EC%84%B1_%EB%A7%88%EC%A7%84%EC%9C%A8%EB%B6%84%EC%84%9D.html" class="post-link">3 경제성 마진율분석</a>
+            </div>
+        </div>
+
+        <div class="phase-card">
+            <h2 class="phase-title"><span>Phase3</span> 렌딩페이지 SEO</h2>
+            <div class="post-list">
+                <a href="03_Phase3_%EB%A0%8C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80_SEO/1_%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84%EC%B5%9C%EC%A0%81%ED%99%94_SEO.html" class="post-link">1 검색엔진최적화 SEO</a>
+                <a href="03_Phase3_%EB%A0%8C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80_SEO/2_%EC%8D%B8%EB%84%A4%EC%9D%BC_%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80%EA%B8%B0%ED%9A%8D.html" class="post-link">2 썸네일 상세페이지기획</a>
+                <a href="03_Phase3_%EB%A0%8C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80_SEO/3_%EA%B5%AC%EB%A7%A4%EC%A0%84%ED%99%98%EC%9C%A8_%EA%B7%B9%EB%8C%80%ED%99%94%EC%9E%A5%EC%B9%98.html" class="post-link">3 구매전환율 극대화장치</a>
+            </div>
+        </div>
+
+        <div class="phase-card">
+            <h2 class="phase-title"><span>Phase4</span> 물류최적화 CS방어</h2>
+            <div class="post-list">
+                <a href="04_Phase4_%EB%AC%BC%EB%A5%98%EC%B5%9C%EC%A0%81%ED%99%94_CS%EB%B0%A9%EC%96%B4/1_%EB%AC%BC%EB%A5%98_%EB%B0%9C%EC%A3%BC%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4.html" class="post-link">1 물류 발주프로세스</a>
+                <a href="04_Phase4_%EB%AC%BC%EB%A5%98%EC%B5%9C%EC%A0%81%ED%99%94_CS%EB%B0%A9%EC%96%B4/2_CS%EC%9D%91%EB%8C%80_%EB%A9%94%EB%89%B4%EC%96%BC.html" class="post-link">2 CS응대 메뉴얼</a>
+                <a href="04_Phase4_%EB%AC%BC%EB%A5%98%EC%B5%9C%EC%A0%81%ED%99%94_CS%EB%B0%A9%EC%96%B4/3_%EB%A6%AC%EB%B7%B0%EB%A7%88%EC%BC%80%ED%8C%85_%EA%B8%B0%EB%B0%98%EB%8B%A4%EC%A7%80%EA%B8%B0.html" class="post-link">3 리뷰마케팅 기반다지기</a>
+            </div>
+        </div>
+
+        <div class="phase-card">
+            <h2 class="phase-title"><span>Phase5</span> 트래픽증폭 스케일업</h2>
+            <div class="post-list">
+                <a href="05_Phase5_%ED%8A%B8%EB%9E%98%ED%94%BD%EC%A6%9D%ED%8F%AD_%EC%8A%A4%EC%BC%80%EC%9D%BC%EC%97%85/1_%EB%84%A4%EC%9D%B4%EB%B2%84%EC%87%BC%ED%95%91_%EA%B2%80%EC%83%89%EA%B4%91%EA%B3%A0_CPC.html" class="post-link">1 네이버쇼핑 검색광고 CPC</a>
+                <a href="05_Phase5_%ED%8A%B8%EB%9E%98%ED%94%BD%EC%A6%9D%ED%8F%AD_%EC%8A%A4%EC%BC%80%EC%9D%BC%EC%97%85/2_%EB%B9%84%EC%A6%88%EC%96%B4%EB%93%9C%EB%B0%94%EC%9D%B4%EC%A0%80_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D.html" class="post-link">2 비즈어드바이저 데이터분석</a>
+                <a href="05_Phase5_%ED%8A%B8%EB%9E%98%ED%94%BD%EC%A6%9D%ED%8F%AD_%EC%8A%A4%EC%BC%80%EC%9D%BC%EC%97%85/3_%EC%83%81%EA%B1%B0%EB%9E%98%ED%99%95%EC%9E%A5_%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B0%95%ED%99%94.html" class="post-link">3 상거래확장 브랜드강화</a>
+            </div>
+        </div>
+
+    </div>
+    
+    <footer>
+        &copy; 2026 SmartStore Education Site. All Rights Reserved. Built securely from Markdown References.
+    </footer>
+</body>
+</html>

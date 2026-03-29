@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_검색엔진최적화_SEO - 스마트스토어 마스터 클래스</title>
+    
+<style>
+    /* 폰트 설정 (Pretendard) */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+    
+    :root {
+        --primary-color: #0058FF; /* 네이버 톤, 블루 */
+        --primary-light: #E6F0FF;
+        --text-main: #333333;
+        --text-mute: #666666;
+        --bg-body: #F9FAFB;
+        --bg-content: #FFFFFF;
+        --border-color: #E5E7EB;
+        --accent-red: #EF4444;
+        --accent-green: #10B981;
+        --accent-yellow: #F59E0B;
+    }
+
+    body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 40px 20px;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--bg-content);
+        padding: 50px 60px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        color: #1F2937;
+    }
+
+    p {
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 24px;
+    }
+
+    li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    /* 테이블 스타일 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    th, td {
+        padding: 15px 20px;
+        border: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #FDFDFD;
+    }
+
+    /* 인용구 및 알림 스타일 */
+    blockquote {
+        background-color: #FFFBEB;
+        border-left: 5px solid var(--accent-yellow);
+        margin: 25px 0;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote strong {
+        color: #D97706;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+
+    .alert-info {
+        background-color: var(--primary-light);
+        border-left: 5px solid var(--primary-color);
+        padding: 20px;
+        border-radius: 4px;
+        margin: 25px 0;
+    }
+
+    /* 체크리스트 */
+    .checklist {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .checklist li {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        background: #F3F4F6;
+        padding: 15px 15px 15px 45px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .checklist li:hover {
+        background: #E5E7EB;
+    }
+
+    .checklist li::before {
+        content: '✓';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* 링크 스타일 */
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #003eb3;
+        text-decoration: underline;
+    }
+
+    /* 하이라이트/팁 뱃지 */
+    .badge {
+        background: var(--primary-color);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .qna-box {
+        background: #F9FAFB;
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .qna-q {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            padding: 30px 20px;
+        }
+        h1 { font-size: 24px; }
+        h2 { font-size: 20px; }
+        table, th, td { font-size: 14px; padding: 10px; }
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 30px;">
+            <a href="../index.html" style="font-size: 16px;">⬅️ 뒤로가기 (메인 허브)</a>
+        </header>
+        <h1>🔍 스토어 노출의 절대 규칙: 1페이지 장악을 위한 네이버 쇼핑 SEO 완벽 해부</h1>
+<h2>📌 1. 왜 이 과정이 중요한가요? (도입부)</h2>
+<p>네이버 쇼핑에서 하루에 등록되는 상품 수는 수백만 개에 달합니다. 아무리 가격을 원가 밑으로 낮추고, 샤넬 뺨치는 고퀄리티 제품 사진을 찍어 올려도 <strong>고객이 검색했을 때 1~2페이지 안에 내 상품이 없으면 매출은 처참한 0원입니다.</strong></p>
+<p>네이버의 검색 로봇(알고리즘)은 사람이 아닙니다. 감정에 호소하거나 물건이 싸다고 위로 올려주지 않습니다. 알고리즘이 사랑하고 적극적으로 맨 위로 밀어주는 완벽한 '정답 세팅법', 즉 <strong>쇼핑 검색엔진 최적화(SEO) 가이드라인</strong>을 0.1%의 오차도 없이 맞추는 것만이 초보 셀러가 기득권 대형 셀러를 이길 유일한 무기입니다.</p>
+<hr />
+<h2>🚀 2. 단계별 실전 액션 플랜 (SEO 알고리즘 매뉴얼)</h2>
+<p>네이버 쇼핑 노출 순위는 <strong>[적합도 + 인기도 + 신뢰도]</strong> 3가지 점수의 총합으로 결정됩니다. 초보자가 당장 목숨 걸고 통제할 수 있는 것은 100% 내가 세팅하는 '적합도' 점수입니다.</p>
+<h3>Step 1: 카테고리 매칭 (적합도 점수 1순위)</h3>
+<ul>
+<li>고객이 '차박 텐트'를 검색했을 때, 1등부터 5등까지 나오는 타사 제품들의 네이버 카테고리가 어떻게 세팅되어 있는지 보세요.</li>
+<li>[스포츠/레저 &gt; 캠핑 &gt; 텐트 &gt; 차박텐트] 가 1~5등의 공통 카테고리라면, 토씨 하나 틀리지 않고 똑같이 내 상품의 카테고리도 '차박텐트'로 꽂아야 합니다. 만약 내 마음대로 '오토캠핑 텐트' 카테고리에 상품을 등록한다면, '차박 텐트'라고 검색하는 고객에게 내 상품은 <strong>영원히 노출되지 않는 투명 인간(노출 배제)</strong> 처리를 당합니다.</li>
+</ul>
+<h3>Step 2: 최적화된 상품명 기획과 문자 배열 공식</h3>
+<ul>
+<li>네이버가 가장 가산점을 퍼주는 상품명 글자 수는 <strong>[공백 포함 50자 이내]</strong>입니다. 100자를 꽉꽉 채워 넣으면 네이버 로봇이 '스팸 어뷰징'으로 간주하여 검색에서 뒤로 날려버립니다.</li>
+<li><strong>황금 상품명 공식</strong>: <code>[브랜드명] + [메인키워드] + [서브키워드/수식어1] + [서브키워드/수식어2]</code></li>
+<li><em>(예시)</em> "지수블랑 여름 시원한 반팔 린넨 롱 원피스" </li>
+</ul>
+<h3>Step 3: 기호의 남발과 조사의 완전 철폐</h3>
+<ul>
+<li>스토어를 돋보이게 하겠다고 <code>★초특가★</code> , <code>[무료배송]</code>, <code>1+1 빅세일</code> 같은 지저분한 특수기호를 상품명에 바르지 마십시오. 네이버 알고리즘이 극도로 혐오하는 어뷰징 행위이며 즉각 페널티(순위 하락)를 받습니다.</li>
+<li>'여름 원피스 시원한 원피스 데일리 원피스' ➝ 최악의 세팅 (원피스 단어 3번 이상 중복 시 감점).</li>
+<li>'린넨<strong>으로 만든</strong> 원피스' ➝ 네이버 형태소 분석 로봇은 어조사 '으로 만든'이 붙은 단어를 읽지 못합니다. 명사 형태로만 깔끔하게 띄어쓰기하여 배열하십시오.</li>
+</ul>
+<hr />
+<h2>💡 3. 상위 1% 셀러들의 실무 시크릿 팁 (노하우)</h2>
+<blockquote>
+<p>🏷️ <strong>"검색어 태그" 10칸은 검색 노출의 숨은 심장입니다!</strong>
+50자 제한 때문에 상품명에 미처 다 적어 넣지 못한 아까운 세부 소형 키워드들은 어떻게 해야 할까요? 네이버 상품 등록란 맨 아래로 내리면 <strong>[검색설정] ➝ [태그]</strong> 를 10개까지 별도 입력하는 심리스(Seamless) 칸이 나옵니다. 
+여기서 그냥 내 마음대로 상상해서 단어를 치지 마시고, 태그 입력창 하단에 뜨는 <strong>"클릭하여 태그 선택(네이버 쇼핑 태그 사전)"</strong> 팝업에서 자동 완성되어 나오는 <strong>녹색 단어</strong>들만 엄선해서 무조건 10개를 꽉꽉 채우십시오! 네이버가 공식적으로 밀어주는 이 녹색 사전에 등록된 태그 10개가 검색 유입의 막강한 서브 엔진 역할을 수행합니다.</p>
+<p>⏳ <strong>최신성 점수 (신상품 버프) 영리하게 빼먹기</strong>
+스토어에 상품을 방금 업로드하면 네이버는 초보 사장님을 위해 기특하게도 1~2주간 <strong>[최신성 가산점]</strong> 이라는 부스터를 달아 임의로 1~3페이지 상단에 띄워줍니다. 이때 고객들이 그 상품을 클릭하고 사줘야 부스터가 유지됩니다. 만약 처음 2주 동안 썸네일이 구리거나 가격이 비싸서 아무도 클릭 안 해주면 부스터 연료가 꺼지며 상품은 영영 나락으로 떨어집니다. 등록 첫 주에는 마진을 포기하고서라도 반드시 리뷰와 첫 결제를 만들어내야 하는 이유입니다.</p>
+</blockquote>
+<hr />
+<h2>❓ 4. 자주 묻는 질문 (FAQ)</h2>
+<p><strong>Q1. 상품명에 유명 경쟁사 브랜드를 적어도 되나요? (예: 나이키 스타일 운동화, 다이슨 호환 거치대)</strong>
+A: 절대 안 됩니다! 지식재산권, 상표권 위반으로 스토어가 즉시 영업 정지당하거나 네이버 자체 검색 제재(클린 모니터링 페널티)를 먹어 사이트가 날아갑니다. '호환', '스타일' 이라는 단어를 붙여도 AI가 전부 적발해 냅니다.</p>
+<p><strong>Q2. 이미 잘 팔리고 있는데, 상품명 뒷부분을 더 예쁘게 수정해도 되나요?</strong>
+A: <strong>이미 구매가 일어나고 1~2페이지 내에 상위 랭크된 상품은 상품명을 단 1글자, 띄어쓰기 하나도 고치지 마십시오 절대!</strong> 네이버 로봇이 "어? 상품 이름이 바뀌었네. 기존 판매하던 게 품절되고 짝퉁을 새로 올렸나(상품ID 세탁)?" 라고 오해하여 수개월간 쌓아온 판매 가산 점수를 0점으로 초기화시키고 10페이지 뒤로 묻어버립니다. </p>
+<h2>📺 스마트스토어 고객센터 메뉴얼</h2>
+<ul>
+<li><a href="https://help.sell.smartstore.naver.com/index.help">고객센터</a></li>
+<li><a href="https://sell.smartstore.naver.com/#/center-notice/list/MANUAL">메뉴얼</a></li>
+</ul>
+<h2>📺 네이버 비즈니스 스쿨 교육 영상</h2>
+<ul>
+<li><a href="https://bizschool.naver.com/online/course/65270/lecture/1462281">쇼핑 검색 랭킹 최적화하기</a></li>
+<li><a href="https://bizschool.naver.com/online/course/65269/lecture/1462275">쇼핑 검색 랭킹 이해하기</a></li>
+<li><a href="https://bizschool.naver.com/online/course/64967/lecture/1461174">스마트스토어 운영 FAQ: 상품 등록</a></li>
+<li><a href="https://bizschool.naver.com/online/course/63827/lecture/1435942">검색이 잘 되는 상품 등록 방법 (feat. 적합도를 높이는 상품 등록 노하우)</a></li>
+</ul>
+    </div>
+</body>
+</html>

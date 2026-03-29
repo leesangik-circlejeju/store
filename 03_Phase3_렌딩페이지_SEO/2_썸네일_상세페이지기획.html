@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_썸네일_상세페이지기획 - 스마트스토어 마스터 클래스</title>
+    
+<style>
+    /* 폰트 설정 (Pretendard) */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+    
+    :root {
+        --primary-color: #0058FF; /* 네이버 톤, 블루 */
+        --primary-light: #E6F0FF;
+        --text-main: #333333;
+        --text-mute: #666666;
+        --bg-body: #F9FAFB;
+        --bg-content: #FFFFFF;
+        --border-color: #E5E7EB;
+        --accent-red: #EF4444;
+        --accent-green: #10B981;
+        --accent-yellow: #F59E0B;
+    }
+
+    body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 40px 20px;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--bg-content);
+        padding: 50px 60px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        color: #1F2937;
+    }
+
+    p {
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 24px;
+    }
+
+    li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    /* 테이블 스타일 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    th, td {
+        padding: 15px 20px;
+        border: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #FDFDFD;
+    }
+
+    /* 인용구 및 알림 스타일 */
+    blockquote {
+        background-color: #FFFBEB;
+        border-left: 5px solid var(--accent-yellow);
+        margin: 25px 0;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote strong {
+        color: #D97706;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+
+    .alert-info {
+        background-color: var(--primary-light);
+        border-left: 5px solid var(--primary-color);
+        padding: 20px;
+        border-radius: 4px;
+        margin: 25px 0;
+    }
+
+    /* 체크리스트 */
+    .checklist {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .checklist li {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        background: #F3F4F6;
+        padding: 15px 15px 15px 45px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .checklist li:hover {
+        background: #E5E7EB;
+    }
+
+    .checklist li::before {
+        content: '✓';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* 링크 스타일 */
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #003eb3;
+        text-decoration: underline;
+    }
+
+    /* 하이라이트/팁 뱃지 */
+    .badge {
+        background: var(--primary-color);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .qna-box {
+        background: #F9FAFB;
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .qna-q {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            padding: 30px 20px;
+        }
+        h1 { font-size: 24px; }
+        h2 { font-size: 20px; }
+        table, th, td { font-size: 14px; padding: 10px; }
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 30px;">
+            <a href="../index.html" style="font-size: 16px;">⬅️ 뒤로가기 (메인 허브)</a>
+        </header>
+        <h1>📸 고객의 지갑을 여는 심리학: 클릭을 훔치는 썸네일과 마약 상세페이지 기획법</h1>
+<h2>📌 1. 왜 이 과정이 중요한가요? (도입부)</h2>
+<p>검색 순위 최적화(SEO)로 애써 1페이지 상단에 노출시켜 놨는데, 고객이 썸네일을 클릭(CTR)하지 않거나 상세페이지를 1초 만에 뒤로가기(이탈)해버리면 모든 노력이 허사가 됩니다. </p>
+<p>이 랜딩페이지 영역은 알고리즘의 몫이 아닌 철저한 <strong>인간 심리학과 시각 마케팅의 영역</strong>입니다. 고객이 수백 개의 타사 상품을 무심하게 스크롤하다 내 썸네일 앞에서 손가락을 멈추게 만들고, 홀린 듯 상세페이지를 읽어 내려가다 숨도 안 쉬고 결제 버튼(CVR)을 누르게 만드는 치명적인 세일즈 기법을 체화하십시오.</p>
+<hr />
+<h2>🚀 2. 단계별 실전 액션 플랜 (화면 기획 매뉴얼)</h2>
+<h3>Step 1: 0.1초의 시선 강탈, 1000x1000 고해상도 썸네일 설계</h3>
+<p>상품의 얼굴인 대표 이미지는 무조건 <strong>1000x1000 해상도의 1:1 정방형</strong>을 엄수해야 합니다.
+- <strong>아마추어의 흔한 실수</strong>: 도매 사이트에서 퍼온 지저분한 사진, 상품명 텍스트 박아넣기, 빨간색 '할인 특가' 스티커 도배. 네이버 AI는 텍스트가 덮인 이미지를 불량으로 간주해 최하위로 강등시킵니다.
+- <strong>프로의 세팅</strong>: 밝은 자연광 햇살 아래에서 찍은 감성 연출컷 1장, 또는 극도로 깔끔하게 배경을 지운(누끼) 초고화질 흰 배경 사진 1장이 검색결과의 썸네일 바다에서 훨씬 더 고급스럽게 빛납니다.</p>
+<h3>Step 2: 절망에서 구원하라! 상세페이지 PAS 프레임워크 (도입부)</h3>
+<p>상세페이지 최상단 첫 장에 "우리 물건 최고예요, 천연 성분이에요" 라고 스펙을 자랑하면 고객은 100% 짜증 내며 화면을 나갑니다. 고객은 오직 '내 문제 발현'에만 관심이 있습니다. 글로벌 마케팅의 절대 공식 <strong>PAS (Problem - Agitation - Solution)</strong> 를 이식하십시오.
+1. <strong>P (문제 인식)</strong>: "아침마다 팅팅 붓는 얼굴, 점심만 되면 녹아내리는 화장... 거울 보며 스트레스받으셨죠?"
+2. <strong>A (심리 선동)</strong>: "비싼 수분크림 쳐발라도 소용없는 피부 겉기름, 이대로 방치하면 모공 늘어나서 돌이킬 수 없습니다!"
+3. <strong>S (해결책 제시)</strong>: "그래서 1년간의 연구 끝에 개발했습니다. 모공의 노폐물을 단숨에 뽑아버리는 지수블랑 팩 클렌저!"</p>
+<h3>Step 3: 글 + 사진 샌드위치 구조 (네이버 스마트에디터 ONE 활용가이드)</h3>
+<ul>
+<li>초보들이 환상을 가지는 최악의 실수: 포토샵이나 망고보드로 세로 10,000픽셀짜리 기나긴 '통이미지 1장'을 구워서 띡 올려버리는 것입니다.</li>
+<li>상위 노출(SEO)을 위해서는 무조건 사진 1장을 넣고 스마트에디터 텍스트 창에 직접 글씨를 2~3줄 타이핑하는 <strong>[사진 1 + 텍스트 + 사진 1 + 텍스트]</strong> 샌드위치 복합 배치를 치십시오. 네이버 검색 로봇이 텍스트 데이터의 밀도를 읽어 퀄리티 높은 문서로 가점 평가를 내립니다.</li>
+</ul>
+<hr />
+<h2>💡 3. 상위 1% 셀러들의 실무 시크릿 팁 (노하우)</h2>
+<blockquote>
+<p>🏃 <strong>모든 결제율은 '움짤(GIF)'이 결정짓는다!</strong>
+현대의 숏폼 중독 고객들은 글자가 연속으로 나오면 1초 만에 뒤로 가기를 누릅니다. 시선을 붙잡기 위해 짧은 동영상보다 수백 배 더 강력한 것이 바로 <strong>자동 재생되는 무음 움짤 [GIF]</strong> 입니다.
+폼클렌징 거품이 쫀쫀하게 늘어나는 장면, 방수 잠바 위로 물방울이 튕겨 나가는 장면을 2초짜리 GIF로 구워 상세페이지 요소요소마다 최소 3~5개를 박아 넣으세요. 글을 안 읽는 90%의 고객도 직관적인 시각 테러(GIF)에 홀려 구매 버튼을 누르게 됩니다.</p>
+<p>📱 <strong>세로형 스마트폰 최적화 (모바일 지배의 법칙)</strong>
+큰 PC 모니터 화면으로 며칠 밤새워 디자인한 예쁜 상세페이지를, 반드시 부모님이나 친구의 '스마트폰'에서 똑바로 켜보십시오! 스토어 유입 고객의 <strong>90% 이상은 조그만 스마트폰 세로 화면</strong>으로 상품을 봅니다.
+PC에서 작고 예쁜 폰트는 모바일에서 개미 똥구멍처럼 보여 읽다 포기하게 됩니다. 폰트 크기를 지금 생각하시는 것(16~18pt)보다 <strong>최소 2배 이상 거대하게(24~32pt) 키워</strong>, 지하철 흔들리는 칸에 앉아서도 할머니가 쓱쓱 읽어 내려갈 수 있게 만들어야 돈이 벌립니다.</p>
+</blockquote>
+<hr />
+<h2>❓ 4. 자주 묻는 질문 (FAQ)</h2>
+<p><strong>Q1. 추가 이미지(서브 썸네일) 9칸은 생략해도 괜찮은가요?</strong>
+A: 무조건 다 명작으로 채우십시오! 네이버 AI는 정보가 촘촘하고 꼼꼼하게 다채워진 상품글을 '정성스러운 고급상품'이라 판단합니다. 메인 사진과 다른 각도의 측면샷, 예쁜 박스 포장샷, 원단 디테일 확대샷으로 구도를 조금씩 달리해 1000px 비율로 무조건 9칸 다 등록하세요! 이 추가 사진들은 나중에 지식쇼핑 검색 결과에서 고객이 슬라이드로 넘겨보며 클릭을 유도하는 훌륭한 미끼가 됩니다.</p>
+<h2>📺 스마트스토어 고객센터 메뉴얼</h2>
+<ul>
+<li><a href="https://help.sell.smartstore.naver.com/index.help">고객센터</a></li>
+<li><a href="https://sell.smartstore.naver.com/#/center-notice/list/MANUAL">메뉴얼</a></li>
+</ul>
+<h3>📚 [LEARNING_ROADMAP] 공식 심화 매뉴얼 (전시/상세페이지)</h3>
+<ul>
+<li><a href="file:///d:/anti/store/참고자료/스마트스토어_전시관리_매뉴얼_250304.pdf">스마트스토어 전시관리 매뉴얼</a></li>
+</ul>
+<h2>📺 네이버 비즈니스 스쿨 교육 영상</h2>
+<ul>
+<li><a href="https://bizschool.naver.com/online/course/64968/lecture/1461168">초급 상세페이지 기획하기</a></li>
+<li><a href="https://bizschool.naver.com/online/course/64970/lecture/1461170">초급 상세페이지 스마트에디터원으로 제작하기</a></li>
+<li><a href="https://bizschool.naver.com/online/course/65648/lecture/1463071">고객의 마음을 사로잡는 상세페이지 작성하기</a></li>
+</ul>
+    </div>
+</body>
+</html>

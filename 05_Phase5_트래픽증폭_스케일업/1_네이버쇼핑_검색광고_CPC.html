@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_네이버쇼핑_검색광고_CPC - 스마트스토어 마스터 클래스</title>
+    
+<style>
+    /* 폰트 설정 (Pretendard) */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+    
+    :root {
+        --primary-color: #0058FF; /* 네이버 톤, 블루 */
+        --primary-light: #E6F0FF;
+        --text-main: #333333;
+        --text-mute: #666666;
+        --bg-body: #F9FAFB;
+        --bg-content: #FFFFFF;
+        --border-color: #E5E7EB;
+        --accent-red: #EF4444;
+        --accent-green: #10B981;
+        --accent-yellow: #F59E0B;
+    }
+
+    body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 40px 20px;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--bg-content);
+        padding: 50px 60px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        color: #1F2937;
+    }
+
+    p {
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 24px;
+    }
+
+    li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    /* 테이블 스타일 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    th, td {
+        padding: 15px 20px;
+        border: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #FDFDFD;
+    }
+
+    /* 인용구 및 알림 스타일 */
+    blockquote {
+        background-color: #FFFBEB;
+        border-left: 5px solid var(--accent-yellow);
+        margin: 25px 0;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote strong {
+        color: #D97706;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+
+    .alert-info {
+        background-color: var(--primary-light);
+        border-left: 5px solid var(--primary-color);
+        padding: 20px;
+        border-radius: 4px;
+        margin: 25px 0;
+    }
+
+    /* 체크리스트 */
+    .checklist {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .checklist li {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        background: #F3F4F6;
+        padding: 15px 15px 15px 45px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .checklist li:hover {
+        background: #E5E7EB;
+    }
+
+    .checklist li::before {
+        content: '✓';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* 링크 스타일 */
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #003eb3;
+        text-decoration: underline;
+    }
+
+    /* 하이라이트/팁 뱃지 */
+    .badge {
+        background: var(--primary-color);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .qna-box {
+        background: #F9FAFB;
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .qna-q {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            padding: 30px 20px;
+        }
+        h1 { font-size: 24px; }
+        h2 { font-size: 20px; }
+        table, th, td { font-size: 14px; padding: 10px; }
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 30px;">
+            <a href="../index.html" style="font-size: 16px;">⬅️ 뒤로가기 (메인 허브)</a>
+        </header>
+        <h1>💸 하루 3만 원으로 1페이지 꼭대기에 꽂는 매직: 네이버 검색광고(CPC) 무작정 따라하기</h1>
+<h2>📌 1. 왜 이 과정이 중요한가요? (도입부)</h2>
+<p>내 상품이 초기 SEO(적합도) 점수가 모자라 10페이지 저 밑바닥 심해에 박혀 있어 아무도 모른다 해도 절망할 필요 없습니다. <strong>자본(돈)의 힘으로 단 5분 만에 쇼핑 검색창 최상단 상석(광고 탭)에 내 상품을 떡 하니 강제로 멱살 잡고 꽂아버리는 네이버 공식 합법적 유료 시스템</strong>이 존재합니다. </p>
+<p>이 시스템은 CPC(Click Per Cost: 클릭당 과금) 기반입니다. 내 상품이 10만 명에게 노출되더라도 아무도 클릭을 안 하면 광고비는 0원이며, 오직 소비자가 내 썸네일을 호기심에 '클릭'하여 내 스토어에 들어왔을 때만 건당 몇십 원~백 원가량의 비용이 통장에서 빠져나가는 매우 합리적인 마케팅 툴입니다.</p>
+<hr />
+<h2>🚀 2. 단계별 실전 액션 플랜 (검색광고 실무 매뉴얼)</h2>
+<h3>Step 1: 검색광고 시스템 로그인 및 비즈머니 충전</h3>
+<ul>
+<li><a href="https://searchad.naver.com">네이버 검색광고 센터</a>에 로그인(스마트스토어 아이디와 별개 가입 필요)하시고, 최소 5만 원 정도를 여유롭게 카드 또는 가상계좌로 충전(비즈머니)합니다.</li>
+</ul>
+<h3>Step 2: 캠페인 및 광고 그룹 생성 (쇼핑검색 유형 세팅)</h3>
+<ul>
+<li>네이버 메인 통합 검색창에 글자로 뜨는 파워링크(텍스트)가 아니라, 네이버 쇼핑 탭에 썸네일 사진과 함께 뜨는 <strong>[쇼핑검색 유형]</strong> 캠페인을 만들어야 합니다.</li>
+<li>새 그룹을 파서, 내 스토어에 올려둔 내가 제일 강하게 푸쉬하고 싶은 '수익성 좋은 메인 상품(예: 차박텐트)'을 연동시켜 불러옵니다!</li>
+</ul>
+<h3>Step 3: 입찰가 다이어트와 '제외 키워드' 설정 (★광고 성공의 99% 핵심)</h3>
+<ul>
+<li>광고를 세팅하면 네이버 시스템이 권장 입찰가인 1,500원, 800원 이런 걸 제안합니다. 순진하게 그 돈 다 주고 호구가 되지 마십시오. 첫 시작은 과감하게 <strong>[50원] 최저가</strong>로 스위치를 내려두고 하루 이틀 노출 순위를 보며 10원 단위로 끌어올리는 것이 정석입니다.</li>
+<li><strong>🚨 뼈 때리는 조언</strong>: 이 쇼핑 검색광고는 내가 키워드를 타게팅하는 게 아니라 네이버 로봇이 내 상품을 읽고 알아서 온갖 키워드에 노출을 뿌려버리는 '자동' 매칭 시스템입니다. 
+  만약 내가 파는 게 '린넨 랩 원피스'라면, 타겟이 불분명한 초대형 키워드인 그냥 '원피스'나 '여성의류' 에 덜컥 노출되어 호기심 클릭만 유발하고 구매는 안 하는 참사(과금 폭탄)가 발생합니다! 
+  따라서 <strong>[제외 키워드 리스트 관리]</strong> 탭에 들어가서 안 붙었으면 하는 대형 단어들(원피스, 치마, 여성복)을 수십 개 수동으로 등록하여 돈 낭비를 100% 철통 방어해야 살아남습니다!</li>
+</ul>
+<hr />
+<h2>💡 3. 상위 1% 셀러들의 실무 시크릿 팁 (노하우)</h2>
+<blockquote>
+<p>📊 <strong>감으로 하는 좀비 광고는 끝! 실전 ROAS 타율 분석법</strong>
+1주일간 5만 원을 검색광고 비즈머니로 태워서 내 스토어로 유입된 클릭을 통해, 최종 20만 원어치 결제 액수가 잡혔다면? 내 <strong>ROAS(Return On Ad Spend : 광고비 대비 매출액 비율)</strong>는 <strong>400%</strong> 입니다! 광고는 자선 사업이 아닙니다. 이 ROAS 지표가 내 수익의 생명줄입니다.</p>
+<p>검색광고 센터의 [보고서(엑셀 리포트)] 탭을 까서 매일 아침 확인하십시오. 
+- 어떤 단어는 단돈 100원만 썼는데 ROAS 700%를 달성합니다. ➝ 이 '황금 롱테일 키워드'에는 과감하게 100원이었던 입찰가를 300원으로 역 베팅하여 맨 위 상단을 완전 장악해 독점하십시오!
+- 어떤 단어는 2만 원이나 과금됐는데 결제는 0원 (ROAS 0%)입니다. ➝ 그 효율 똥망 붕어빵 키워드는 즉각 제외 키워드로 <strong>[OFF / 영구 차단]</strong> 해버리는 잔혹한 숙청 과정을 2주간 디버깅 반복하는 것! 이것이 디지털 마케팅의 모든 것입니다.</p>
+</blockquote>
+<hr />
+<h2>❓ 4. 자주 묻는 질문 (FAQ)</h2>
+<p><strong>Q1. 돈을 제일 많이 무식하게 주면 무조건 노출 맨 위에 뜨는 1등이 되는 게 광고 아닌가요?</strong>
+A: 네이버는 그 정도로 단순하지 않습니다! 쇼핑 검색광고 랭킹 로직 알고리즘은 단순히 단가 순으로 줄을 세우는 것이 아니라, <strong>[광고 입찰 단가 X 상품 품질(적합도) 가중치 점수]</strong>를 곱해서 줄을 세웁니다.
+내가 암만 1클릭에 10,000원을 주겠다고 허세를 부려 놔도, 클릭해서 들어온 고객이 상세페이지가 구려서 1초 만에 뒤로가기를 누르거나(이탈률 폭발), 카테고리가 엉뚱하면 네이버가 "어, 얘 돈만 많고 불량품이네" 라며 그 광고를 저 밑으로 강제로 떨궈버립니다!! 
+반대로 앞서 배운 마약 썸네일과 완벽한 SEO, 상세페이지 품질을 완벽히 구축한 당신은 단돈 <strong>[200원]</strong>만 써내도 1만 원짜리 대기업 광고를 밟고 광고 최상단에 고정석을 차지할 수 있습니다!</p>
+<h2>📺 스마트스토어 고객센터 메뉴얼</h2>
+<ul>
+<li><a href="https://help.sell.smartstore.naver.com/index.help">고객센터</a></li>
+<li><a href="https://sell.smartstore.naver.com/#/center-notice/list/MANUAL">메뉴얼</a></li>
+</ul>
+<h3>📚 [LEARNING_ROADMAP] 공식 심화 매뉴얼 (스마트스토어 광고)</h3>
+<ul>
+<li><a href="file:///d:/anti/store/참고자료/매뉴얼_스마트스토어광고.pdf">매뉴얼: 스마트스토어광고 입문 가이드</a></li>
+</ul>
+<h2>📺 네이버 비즈니스 스쿨 교육 영상</h2>
+<ul>
+<li><a href="https://bizschool.naver.com/online/course/65448/lecture/1462670">ADVoost 쇼핑 이해하기</a></li>
+<li><a href="https://bizschool.naver.com/online/course/65447/lecture/1462665">초보 스마트스토어 판매자를 위한 네이버 광고 상품 소개</a></li>
+<li><a href="https://bizschool.naver.com/online/course/65381/lecture/1462573">판매자 마케팅 수수료로 비용 효율 높이기</a></li>
+<li><a href="https://bizschool.naver.com/online/course/64918/lecture/1461059">사업 성장 단계별 마케팅 전략 노하우</a></li>
+</ul>
+    </div>
+</body>
+</html>
